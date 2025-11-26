@@ -1,0 +1,25 @@
+{
+  "name": "English Tutor Server",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+
+  // 2. Comandos que rodam TODA VEZ que o Codespace liga/reinicia
+  "postStartCommand": "nohup bash -c 'OLLAMA_HOST=0.0.0.0 ollama serve' > ollama.log 2>&1 & sleep 5 && ollama run phi3 'Server Ready!'",
+
+  // 3. Configurações de Porta (Automático para Public)
+  "forwardPorts": [11434],
+  "portsAttributes": {
+    "11434": {
+      "label": "Ollama API",
+      "visibility": "public"
+    }
+  },
+
+  // Customizações do VS Code (Opcional)
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  }
+}
